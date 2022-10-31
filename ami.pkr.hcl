@@ -19,10 +19,10 @@ build {
     sources = [
         "source.amazon-ebs.nodejs-packer-ami-rachit"
     ]
-
-    "provisioners": [{
-    "type": "shell",
-    "inline": [
+  
+     provisioner "shell" {
+       
+     "inline": [
       "sleep 30",
       "sudo apt update -y",
       "sudo apt install nodejs -y",
@@ -39,7 +39,6 @@ build {
       "sudo env PATH=$PATH:/usr/bin /usr/local/lib/node_modules/pm2/bin/pm2 startup systemd -u ubuntu --hp /home/ubuntu",
       "pm2 save"
       
-    ]
-    }]
- }
+      ]
+     }
 }
